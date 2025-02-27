@@ -3,15 +3,34 @@
   "WorkspaceRootPath": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\build\\Container.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\build\\Container.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8FD3E0C8-5331-4CD4-8A4D-B6B7D9194C23}|..\\DataLayer\\DataLayer.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\datalayer\\applicatondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -47,6 +66,67 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T20:50:37.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T20:50:26.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Views\\_ViewStart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T20:50:16.661Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AQIAAJYSAAAAAAAAAAAkwK8SAACEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-02-27T20:47:33.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAB4BAAAAAAAAAAAQwEgBAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T20:43:17.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Container.targets",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\build\\Container.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\build\\Container.targets",
@@ -54,38 +134,35 @@
               "RelativeToolTip": "..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\build\\Container.targets",
               "ViewState": "AQIAAMkAAAAAAAAAAAD4v9YAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-02-26T21:20:08.109Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T21:20:08.109Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAEAAAAAKAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAYwEAAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:19:32.053Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T21:19:32.053Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-26T21:17:39.015Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T21:17:39.015Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "ApplicatonDbContext.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\ApplicatonDbContext.cs",
               "RelativeDocumentMoniker": "..\\DataLayer\\ApplicatonDbContext.cs",
@@ -93,12 +170,11 @@
               "RelativeToolTip": "..\\DataLayer\\ApplicatonDbContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:13:02.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T21:13:02.733Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "QuizViewModel.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\QuizViewModel.cs",
               "RelativeDocumentMoniker": "..\\DataLayer\\QuizViewModel.cs",
@@ -106,12 +182,11 @@
               "RelativeToolTip": "..\\DataLayer\\QuizViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:11:18.778Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T21:11:18.778Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "LoginModel.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\LoginModel.cs",
               "RelativeDocumentMoniker": "..\\DataLayer\\LoginModel.cs",
@@ -119,12 +194,11 @@
               "RelativeToolTip": "..\\DataLayer\\LoginModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:11:03.135Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T21:11:03.135Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "RegisterModel.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\RegisterModel.cs",
               "RelativeDocumentMoniker": "..\\DataLayer\\RegisterModel.cs",
@@ -132,12 +206,11 @@
               "RelativeToolTip": "..\\DataLayer\\RegisterModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:10:34.955Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T21:10:34.955Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "TestAttempt.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\TestAttempt.cs",
               "RelativeDocumentMoniker": "..\\DataLayer\\TestAttempt.cs",
@@ -145,25 +218,23 @@
               "RelativeToolTip": "..\\DataLayer\\TestAttempt.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:10:11.793Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T21:10:11.793Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DataLayer",
+              "DocumentIndex": 13,
+              "Title": "DataLayer.csproj",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\DataLayer.csproj",
               "RelativeDocumentMoniker": "..\\DataLayer\\DataLayer.csproj",
               "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\DataLayer.csproj",
               "RelativeToolTip": "..\\DataLayer\\DataLayer.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-02-26T21:07:26.466Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T21:07:26.466Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "..\\DataLayer\\ApplicationUser.cs",
@@ -171,12 +242,7 @@
               "RelativeToolTip": "..\\DataLayer\\ApplicationUser.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:07:18.051Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+              "WhenOpened": "2025-02-26T21:07:18.051Z"
             }
           ]
         }
