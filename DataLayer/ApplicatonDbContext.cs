@@ -10,8 +10,9 @@ namespace DataLayer
             : base(options)
         {
         }
-
+        public DbSet<User> Users { get; set; }
         public DbSet<TestAttempt> TestAttempts { get; set; }
+
     }
 
 

@@ -9,6 +9,8 @@ namespace DataLayer
         public string LastName { get; set; }   // Фамилия
         public string MiddleName { get; set; } // Отчество
         public string ProfileImagePath { get; set; } // Путь к изображению профиля
+
         public ICollection<TestAttempt> TestAttempts { get; set; }
+        public User UserProfile { get; set; } // Связь с классом User
     }
 }

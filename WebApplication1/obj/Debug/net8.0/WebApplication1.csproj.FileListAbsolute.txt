@@ -182,3 +182,5 @@ C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\Microsof
 C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\DataLayer.dll
 C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\DataLayer.pdb
 C:\Users\Никита\Downloads\mathio\WebApplication1\obj\Debug\net8.0\WebApplication1.sourcelink.json
+C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\DevOne.Security.Cryptography.BCrypt.dll
+C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\BCrypt.Net-Core.dll

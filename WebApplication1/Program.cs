@@ -3,14 +3,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using DataLayer;
+using Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
 // Настройка базы данных
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Настройка Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
@@ -35,7 +40,31 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// Регистрация AuthService
+builder.Services.AddScoped<AuthService>();
+
+// Добавление сессий
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+// Добавление сервисов для MVC
 builder.Services.AddControllersWithViews();
+
+// Добавление CORS (если необходимо)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
 
 var app = builder.Build();
 
@@ -53,8 +82,11 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseCors("AllowAllOrigins");
+
 app.UseRouting();
 
+app.UseSession(); // Включить использование сессий
 app.UseAuthentication();
 app.UseAuthorization();
 

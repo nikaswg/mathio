@@ -1,0 +1,152 @@
+﻿@model DataLayer.RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+        color: #ffffff;
+        min-width: 100vw;
+    }
+
+    .header {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 40px;
+    }
+
+        .header h1 {
+            font-family: 'UnifrakturCook', cursive;
+            font-size: 4rem;
+            color: #BB86FC;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7), 3px 3px 0 rgba(255, 255, 255, 0.3);
+            z-index: 1;
+            position: relative;
+        }
+
+    .form-container {
+        max-width: 450px;
+        margin: 0 auto;
+        background-color: #1E1E1E;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input {
+        padding: 10px;
+        border: 1px solid #BB86FC;
+        border-radius: 5px;
+        width: 90%; /* Установите ширину меньше 100% */
+        background-color: #2A2A2A;
+        color: #ffffff;
+        transition: border-color 0.3s ease;
+        margin: 0 auto; /* Центрируем поле */
+        display: block; /* Заставляем поле занимать всю ширину */
+    }
+
+        input:focus {
+            border-color: #BB86FC;
+            outline: none;
+        }
+
+    .text-danger {
+        color: red;
+        margin-top: 5px;
+    }
+
+    button {
+        background-color: #BB86FC;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #9B6BFC;
+        transform: scale(1.05);
+     }
+
+    .register-link {
+        margin-top: 15px;
+        display: block;
+        color: #BB86FC;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .register-link:hover {
+        text-decoration: underline;
+    }
+
+    .required-star {
+        color: #BB86FC; /* Фиолетовый цвет */
+ /* Отступ для лучшего расположения */
+    }
+</style>
+
+<div class="header">
+    <h1>Регистрация</h1>
+</div>
+
+<div class="form-container">
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="text-danger">Ошибка регистрации. Пожалуйста, проверьте данные.</div>
+    }
+
+    <form method="post" asp-action="Register" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Ник <span class="required-star">*</span></label>
+            <input type="text" name="Username" required />
+            <span class="text-danger">@Html.ValidationMessage("Username")</span>
+        </div>
+        <div class="form-group">
+            <label>Email <span class="required-star">*</span></label>
+            <input type="email" name="Email" required />
+            <span class="text-danger">@Html.ValidationMessage("Email")</span>
+        </div>
+        <div class="form-group">
+            <label>Пароль <span class="required-star">*</span></label>
+            <input type="password" name="Password" required />
+            <span class="text-danger">@Html.ValidationMessage("Password")</span>
+        </div>
+        <div class="form-group">
+            <label>Имя</label>
+            <input type="text" name="FirstName" />
+        </div>
+        <div class="form-group">
+            <label>Фамилия</label>
+            <input type="text" name="LastName" />
+        </div>
+        <div class="form-group">
+            <label>Отчество</label>
+            <input type="text" name="MiddleName" />
+        </div>
+        <div class="form-group">
+            <label>Изображение профиля</label>
+            <input type="file" name="ProfileImage" accept="image/*" />
+        </div>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <a href=@Url.Action("Index", "Home") class="register-link">Уже есть аккаунт? Войдите</a>
+</div>

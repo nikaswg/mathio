@@ -3,23 +3,27 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>WebApplication1</title>
+    <title>@ViewData["Title"] - WebApplication1</title>
+
 </head>
 
 <body>
     <header>
-
+        <!-- Ваш заголовок -->
     </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <!-- Ваш подвал -->
+    </footer>
+
+
+    @RenderSection("Scripts", required: false) <!-- Отображение секции Scripts -->
 </body>
-
-<div class="container">
-
-    <main role="main" class="pb-3">
-
-        @RenderBody()
-
-    </main>
-
-</div>
 
 </html>
