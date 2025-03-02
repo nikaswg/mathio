@@ -50,6 +50,14 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public IActionResult deriviate_test()
+        {
+            ViewBag.Username = HttpContext.Session.GetString("Username") ?? "Гость";
+            ViewBag.Email = HttpContext.Session.GetString("Email") ?? "Не указано";
+            ViewBag.Role = HttpContext.Session.GetString("Role") ?? "Не указана";
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -218,7 +218,7 @@
     <div id="tests" class="submenu">
         <div class="flex-container">
             <div class="nav-section">
-                <button class="nav-button" onclick="OpenDeriviateTest()">Производные</button>
+                <button class="nav-button" onclick="Open_deriviate_test()">Производные</button>
                 <button class="nav-button" onclick="">Пределы</button>
             </div>
         </div>
@@ -370,6 +370,10 @@
             document.getElementById("roleDisplay").innerText = role;
 
             document.getElementById("userInfo").style.display = "block"; // Отображаем информацию о пользователе
+        }
+
+        function Open_deriviate_test() {
+            window.location.href = 'deriviate_test';
         }
 
         // Вызов функции Login при загрузке страницы
