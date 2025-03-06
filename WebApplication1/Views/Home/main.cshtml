@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     var username = ViewBag.Username;
     var email = ViewBag.Email;
     var role = ViewBag.Role;
@@ -203,6 +203,10 @@
             <button class="menu-button" onclick="toggleSubMenu('material')">Справочные материалы</button>
             <button class="menu-button" onclick="toggleSubMenu('tests')">Тесты</button>
             <button class="menu-button" onclick="showUserInfo()">Информация</button>
+            <a href="@Url.Action("UserAttempts", "Home", new { email = email, UserName = username })"
+               class="menu-button">
+                Посмотреть попытки
+            </a>
         </div>
     </nav>
 
@@ -219,7 +223,7 @@
         <div class="flex-container">
             <div class="nav-section">
                 <button class="nav-button" onclick="Open_deriviate_test()">Производные</button>
-                <button class="nav-button" onclick="">Пределы</button>
+                <button class="nav-button" onclick="Open_prob_test()">Пробный</button>
             </div>
         </div>
     </div>
@@ -259,7 +263,7 @@
         <p>&copy; Разработчик: Нагорнюк Никита Владимирович 2025. Все права защищены.</p>
         <p>Email: nikitanagornuik@gmail.com. Telegram: &commat;nikaswgtop.</p>
     </footer>
-    
+
     <script>
         function showUserInfo() {
             document.getElementById("modalUsername").innerText = '@username';
@@ -376,10 +380,18 @@
             window.location.href = 'deriviate_test';
         }
 
+        function Open_prob_test() {
+            window.location.href = 'prob_test';
+        }
+
         // Вызов функции Login при загрузке страницы
         document.addEventListener("DOMContentLoaded", function () {
             Login();
         });
+
+        function open_prob() {
+            window.location.href = 'check_att_prob';
+        }
     </script>
 
     <!-- Модальное окно -->

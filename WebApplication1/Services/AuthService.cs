@@ -1,5 +1,6 @@
 ﻿using DataLayer; // Убедитесь, что это ваше пространство имен
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -33,11 +34,11 @@ namespace Services
 
             var claims = new[]
             {
-        new Claim(JwtRegisteredClaimNames.Sub, email),
-        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()), // Используйте Guid для уникальности
-        new Claim(ClaimTypes.NameIdentifier, id.ToString()),
-        new Claim(ClaimTypes.Role, "user")
-    };
+                new Claim(JwtRegisteredClaimNames.Sub, email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()), // Используйте Guid для уникальности
+                new Claim(ClaimTypes.NameIdentifier, id.ToString()),
+                new Claim(ClaimTypes.Role, "user")
+            };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(GetJwtKey()));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -112,6 +113,47 @@ namespace Services
         public async Task<User> GetUserByIdAsync(int userId)
         {
             return await _context.Users.FindAsync(userId);
+        }
+
+        public async Task<TestAttempt> SubmitQuizResultsAsync(string email, int score, int totalQuestions, string userAnswers, string name_test)
+        {
+            _logger.LogInformation("Получены результаты теста от пользователя: {Email}, Очки: {Score}, Всего вопросов: {TotalQuestions}.", email, score, totalQuestions);
+
+            var attempt = new TestAttempt
+            {
+                UserId = email, // Используем email как UserId
+                Score = score,
+                TotalQuestions = totalQuestions,
+                UserAnswers = userAnswers,
+                AttemptDate = DateTime.Now, // Устанавливаем текущее время
+                name_test = name_test
+            };
+
+            // Логируем информацию о попытке
+            _logger.LogInformation("Добавление попытки теста в базу данных: {@Attempt}", attempt);
+
+            _context.TestAttempts.Add(attempt); // Добавляем попытку в контекст
+            await _context.SaveChangesAsync(); // Сохраняем изменения в базе данных
+
+            _logger.LogInformation("Попытка теста успешно добавлена в базу данных для пользователя: {Email}.", email);
+            return attempt; // Возвращаем созданный объект попытки
+        }
+
+
+        public List<TestAttempt> GetUserAttempts(string email)
+        {
+            _logger.LogInformation("Запрос попыток для: {Email}", email);
+            try
+            {
+                return _context.TestAttempts
+                    .Where(a => a.UserId == email)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ошибка при получении попыток");
+                return new List<TestAttempt>();
+            }
         }
     }
 }

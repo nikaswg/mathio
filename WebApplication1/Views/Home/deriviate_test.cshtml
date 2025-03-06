@@ -1,7 +1,21 @@
-﻿@{
+﻿﻿@{
     var username = ViewBag.Username;
     var email = ViewBag.Email;
     var role = ViewBag.Role;
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
 }
 
 <!DOCTYPE html>
@@ -20,7 +34,7 @@
             padding: 0;
             background-color: #121212;
             color: #ffffff;
-            padding-bottom: 60px; /* Отступ для футера */
+            padding-bottom: 60px;
         }
 
         .header {
@@ -88,20 +102,7 @@
 
         .option {
             margin: 5px 0;
-            display: block; /* Display as block for column layout */
-        }
-
-        .menu-button {
-            background-color: #2A2A2A;
-            color: #ffffff;
-            border: none;
-            padding: 10px;
-            margin: 5px 0;
-            width: 20%;
-            text-align: left;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            display: block;
         }
 
         .submit-button {
@@ -111,18 +112,17 @@
             padding: 10px;
             margin: 5px 0;
             width: 100%;
-            text-align: left;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
         }
 
-            .submit-button:hover, .menu-button:hover {
+            .submit-button:hover {
                 background-color: #3A3A3A;
                 transform: scale(1.05);
             }
 
-            .submit-button:active, .menu-button:active {
+            .submit-button:active {
                 background-color: #BB86FC;
                 transform: scale(0.95);
             }
@@ -134,11 +134,11 @@
         }
 
         .correct {
-            background-color: #4CAF50; /* Green */
+            background-color: #4CAF50;
         }
 
         .incorrect {
-            background-color: #F44336; /* Red */
+            background-color: #F44336;
         }
 
         footer {
@@ -146,7 +146,7 @@
             text-align: center;
             padding: 10px;
             color: #B0BEC5;
-            position: fixed; /* Фиксированное положение */
+            position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
@@ -155,12 +155,6 @@
         .summary {
             margin-top: 20px;
             font-size: 1.2rem;
-        }
-
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
         }
     </style>
 </head>
@@ -178,6 +172,11 @@
 
     <div class="quiz-container" id="quiz">
         <form id="quizForm">
+            <!-- Скрытые поля для передачи данных -->
+            <input type="hidden" name="email" value="@email">
+            <input type="hidden" name="username" value="@username">
+
+            <!-- Вопросы теста -->
             <div class="question">
                 <h2>1. Найдите производную функции f(x) = x^2.</h2>
                 <div class="options">
@@ -298,7 +297,44 @@
             document.getElementById("infoModal").style.display = "none"; // Скрываем модальное окно
         }
 
+        // Функция для сохранения ответов в localStorage
+        function saveAnswersToLocalStorage() {
+            const form = document.getElementById('quizForm');
+            const answers = {};
+
+            // Сохраняем выбранные ответы для каждого вопроса
+            for (let i = 1; i <= 9; i++) {
+                const questionName = `q${i}`;
+                const selectedAnswer = form.querySelector(`input[name="${questionName}"]:checked`)?.value || '';
+                answers[questionName] = selectedAnswer;
+            }
+
+            // Сохраняем ответы в localStorage
+            localStorage.setItem('quizAnswers', JSON.stringify(answers));
+        }
+
+        // Функция для восстановления ответов из localStorage
+        function restoreAnswersFromLocalStorage() {
+            const savedAnswers = localStorage.getItem('quizAnswers');
+
+            if (savedAnswers) {
+                const answers = JSON.parse(savedAnswers);
+                const form = document.getElementById('quizForm');
+
+                // Восстанавливаем выбранные ответы для каждого вопроса
+                for (let question in answers) {
+                    const selectedAnswer = answers[question];
+                    if (selectedAnswer && form.querySelector(`input[name="${question}"][value="${selectedAnswer}"]`)) {
+                        form.querySelector(`input[name="${question}"][value="${selectedAnswer}"]`).checked = true;
+                    }
+                }
+            }
+        }
+
+        // Функция для отправки теста
         function submitQuiz() {
+            saveAnswersToLocalStorage(); // Сохраняем ответы перед отправкой
+
             const correctAnswers = {
                 q1: "2x",
                 q2: "cos(x)",
@@ -314,11 +350,17 @@
             const form = document.getElementById('quizForm');
             let score = 0;
             const totalQuestions = Object.keys(correctAnswers).length;
-            let resultsHtml = '';
+            let userAnswers = {};
 
+            // Проверяем ответы и считаем баллы
             for (let question in correctAnswers) {
-                const selectedAnswer = form[question].value;
+                const selectedAnswer = form.querySelector(`input[name="${question}"]:checked`)?.value || '';
                 const resultDiv = document.getElementById(`result-${question}`);
+
+                // Сохраняем ответ пользователя
+                userAnswers[question] = selectedAnswer;
+
+                // Проверяем ответ и обновляем счет
                 if (selectedAnswer === correctAnswers[question]) {
                     resultDiv.innerHTML = `<div class="result correct">Верно! (${correctAnswers[question]})</div>`;
                     score++;
@@ -327,13 +369,59 @@
                 }
             }
 
-            const accuracy = ((score / totalQuestions) * 100).toFixed(2);
-            resultsHtml += `<div class="result">Процент правильных ответов: ${accuracy}%</div>`;
-            resultsHtml += `<div class="result">Количество выполненных заданий: ${score} из ${totalQuestions}</div>`;
+            // Отправка данных на сервер
+            const email = form.email.value;
+            const name_test = 'deriviate_test';
 
-            document.getElementById('finalResult').innerHTML = resultsHtml; // Отображаем результаты
-            form.reset(); // Сбрасываем форму
+            const hiddenForm = document.createElement('form');
+            hiddenForm.method = 'GET';
+            hiddenForm.action = '/Home/SubmitQuizResults';
+
+            const emailInput = document.createElement('input');
+            emailInput.type = 'hidden';
+            emailInput.name = 'email';
+            emailInput.value = email;
+
+            const scoreInput = document.createElement('input');
+            scoreInput.type = 'hidden';
+            scoreInput.name = 'score';
+            scoreInput.value = score;
+
+            const totalQuestionsInput = document.createElement('input');
+            totalQuestionsInput.type = 'hidden';
+            totalQuestionsInput.name = 'totalQuestions';
+            totalQuestionsInput.value = totalQuestions;
+
+            const userAnswersInput = document.createElement('input');
+            userAnswersInput.type = 'hidden';
+            userAnswersInput.name = 'userAnswers';
+            userAnswersInput.value = JSON.stringify(userAnswers);
+
+            const name_testInput = document.createElement('input');
+            name_testInput.type = 'hidden';
+            name_testInput.name = 'name_test';
+            name_testInput.value = name_test;
+
+            hiddenForm.appendChild(emailInput);
+            hiddenForm.appendChild(scoreInput);
+            hiddenForm.appendChild(totalQuestionsInput);
+            hiddenForm.appendChild(userAnswersInput);
+            hiddenForm.appendChild(name_testInput);
+
+            document.body.appendChild(hiddenForm);
+            hiddenForm.submit();
+
+            // Удаляем форму после отправки
+            document.body.removeChild(hiddenForm);
+
+            // Очищаем localStorage после отправки
+            localStorage.removeItem('quizAnswers');
         }
+
+        // Восстанавливаем ответы при загрузке страницы
+        window.onload = function () {
+            restoreAnswersFromLocalStorage();
+        };
     </script>
 
     <div id="infoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0, 0, 0, 0.7); z-index:1000; justify-content: center; align-items: center;">
