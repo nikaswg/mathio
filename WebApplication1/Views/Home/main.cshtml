@@ -207,6 +207,10 @@
                class="menu-button">
                 Посмотреть попытки
             </a>
+            @if (role == "Developer")
+            {
+                <button class="menu-button" onclick="showDevTools()">Средства разработчика</button>
+            }
         </div>
     </nav>
 
@@ -391,6 +395,10 @@
 
         function open_prob() {
             window.location.href = 'check_att_prob';
+        }
+
+        function showDevTools() {
+            window.location.href = 'dev_tools'
         }
     </script>
 

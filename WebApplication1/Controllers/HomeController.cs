@@ -1,6 +1,7 @@
 ﻿using DataLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Services;
 using System.Diagnostics;
 using WebApplication1.Models;
@@ -11,12 +12,16 @@ namespace WebApplication1.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly AuthService _authService;
+        private readonly SearchService _searchService;
+        private readonly ApplicationDbContext _context;
 
         // Объединённый конструктор
-        public HomeController(ILogger<HomeController> logger, AuthService authService)
+        public HomeController(ILogger<HomeController> logger, AuthService authService, SearchService searchService, ApplicationDbContext context)
         {
             _logger = logger;
             _authService = authService;
+            _searchService = searchService;
+            _context = context; 
         }
 
         public IActionResult Main()
@@ -53,6 +58,14 @@ namespace WebApplication1.Controllers
 
         public IActionResult check_att_prob()
         {
+            return View();
+        }
+
+        public IActionResult dev_tools()
+        {
+            ViewBag.Username = HttpContext.Session.GetString("Username") ?? "Гость";
+            ViewBag.Email = HttpContext.Session.GetString("Email") ?? "Не указано";
+            ViewBag.Role = HttpContext.Session.GetString("Role") ?? "Не указана";
             return View();
         }
 
@@ -168,6 +181,51 @@ namespace WebApplication1.Controllers
             ViewBag.Username = userName;
 
             return View(attempts);
+        }
+
+        [HttpGet]
+        public IActionResult SearchUsers(string searchTerm)
+        {
+            var users = _context.Users
+                .Where(u => u.Email.Contains(searchTerm)
+                           || u.UserName.Contains(searchTerm))
+                .Select(u => new
+                {
+                    u.Id,
+                    u.UserName,
+                    u.FirstName,
+                    u.LastName,
+                    u.Email,
+                    u.Role
+                })
+                .ToList();
+            Console.WriteLine(users);
+            return Json(users);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PromoteToAdmin(int id)
+        {
+            try
+            {
+                var user = await _context.Users.FindAsync(id);
+                if (user == null)
+                    return Json(new { success = false, message = "User not found" });
+
+                if (user.Role == "Admin")
+                    return Json(new { success = false, message = "User is already an Admin" });
+
+                user.Role = "Admin";
+                _context.Users.Update(user);
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Promotion error");
+                return Json(new { success = false, message = ex.Message });
+            }
         }
     }
 }

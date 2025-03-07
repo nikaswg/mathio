@@ -38,6 +38,7 @@ builder.Services.AddAuthentication(options =>
 
 // Регистрация AuthService
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<SearchService>();
 
 // Добавление сессий
 builder.Services.AddSession(options =>

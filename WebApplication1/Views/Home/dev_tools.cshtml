@@ -1,0 +1,338 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber User Search</title>
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --dark-bg: #0a0a12;
+            --cyber-border: 2px solid rgba(0, 243, 255, 0.3);
+            --error-red: #ff003c;
+        }
+
+        body {
+            background: linear-gradient(45deg, #000 0%, #001 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            color: var(--neon-blue);
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .cyber-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(10, 10, 18, 0.97);
+            border: var(--cyber-border);
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.1);
+        }
+
+        .cyber-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px var(--neon-blue);
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-panel {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cyber-input {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            border: var(--cyber-border);
+            color: var(--neon-blue);
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cyber-input:focus {
+            outline: none;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .cyber-btn {
+            padding: 1rem 2rem;
+            background: var(--neon-blue);
+            border: none;
+            color: var(--dark-bg);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cyber-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+
+        .cyber-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: rgba(0, 243, 255, 0.03);
+        }
+
+        .cyber-table th,
+        .cyber-table td {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+            text-align: left;
+        }
+
+        .cyber-table th {
+            background: rgba(0, 243, 255, 0.1);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .role-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+
+        .admin {
+            background: rgba(255, 0, 60, 0.1);
+            color: var(--error-red);
+        }
+
+        .user {
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid var(--error-red);
+            border-radius: 8px;
+            margin-top: 2rem;
+            animation: glitch 1s infinite;
+        }
+
+        @@keyframes glitch {
+            0%, 100% { text-shadow: 2px 2px var(--error-red), -2px -2px var(--neon-blue); }
+            50% { text-shadow: -2px 2px var(--error-red), 2px -2px var(--neon-blue); }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .scan-line {
+            position: fixed;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent 0%, var(--neon-blue) 50%, transparent 100%);
+            animation: scan 4s linear infinite;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        @@keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --dark-bg: #0a0a12;
+            --cyber-border: 2px solid rgba(0, 243, 255, 0.3);
+            --error-red: #ff003c;
+        }
+
+        /* Добавляем стили для кнопки назначения роли */
+        .role-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9em;
+            background: var(--neon-blue);
+            color: var(--dark-bg);
+        }
+
+            .role-btn:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 15px var(--neon-blue);
+            }
+
+            .role-btn.disabled {
+                background: rgba(255, 255, 255, 0.1);
+                color: rgba(255, 255, 255, 0.5);
+                cursor: not-allowed;
+            }
+    </style>
+</head>
+<body>
+    <div class="scan-line"></div>
+    <div class="loading-overlay" id="loader">
+        <div class="cyber-title">LOADING...</div>
+    </div>
+
+    <div class="cyber-container">
+        <h1 class="cyber-title">🔍 USER ADMIN PANEL</h1>
+
+        <div class="search-panel">
+            <input type="text"
+                   class="cyber-input"
+                   placeholder="ENTER EMAIL OR USERNAME..."
+                   id="searchInput"
+                   autofocus>
+            <button class="cyber-btn" onclick="searchUsers()">
+                SEARCH
+            </button>
+        </div>
+
+        <div id="resultsContainer">
+            <table class="cyber-table" id="resultsTable" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>USERNAME</th>
+                        <th>FULL NAME</th>
+                        <th>EMAIL</th>
+                        <th>ROLE</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                </tbody>
+            </table>
+
+            <div id="statusMessage" class="no-results" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        const loader = document.getElementById('loader');
+        let currentRequest = null;
+
+        async function searchUsers() {
+            if (currentRequest) currentRequest.abort();
+
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            const tbody = document.getElementById('resultsBody');
+            const table = document.getElementById('resultsTable');
+            const statusMsg = document.getElementById('statusMessage');
+
+            loader.style.display = 'flex';
+            tbody.innerHTML = '';
+            table.style.display = 'none';
+            statusMsg.style.display = 'none';
+
+            try {
+                const controller = new AbortController();
+                currentRequest = controller;
+
+                const response = await fetch(`/Home/SearchUsers?searchTerm=${encodeURIComponent(searchTerm)}`, {
+                    signal: controller.signal
+                });
+
+                if (!response.ok) throw new Error(`Server error: ${response.status}`);
+
+                const users = await response.json();
+
+                if (users.length > 0) {
+                    users.forEach(user => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                                    <td>${user.id}</td>
+                                    <td>${user.userName}</td>
+                                    <td>${user.firstName} ${user.lastName}</td>
+                                    <td>${user.email}</td>
+                                    <td><span class="role-badge ${user.role.toLowerCase()}">${user.role.toUpperCase()}</span></td>
+                                    <td>
+                                        ${user.role === 'User' ?
+                                `<button class="role-btn" onclick="promoteToAdmin(${user.id})">Make Admin</button>` :
+                                `<button class="role-btn disabled" disabled>Already Admin</button>`
+                            }
+                                    </td>
+                                `;
+                        tbody.appendChild(row);
+                    });
+                    table.style.display = 'table';
+                } else {
+                    statusMsg.textContent = `⚠️ NO RESULTS FOR "${searchTerm.toUpperCase()}"`;
+                    statusMsg.style.display = 'block';
+                }
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    statusMsg.textContent = '‼️ CONNECTION ERROR ‼️';
+                    statusMsg.style.display = 'block';
+                    console.error('Search failed:', error);
+                }
+            } finally {
+                loader.style.display = 'none';
+                currentRequest = null;
+            }
+        }
+
+        async function promoteToAdmin(userId) {
+            if (!confirm('Are you sure you want to promote this user to Admin?')) return;
+
+            try {
+                const response = await fetch(`/Home/PromoteToAdmin?id=${userId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) throw new Error(`Server error: ${response.status}`);
+
+                const result = await response.json();
+                if (result.success) {
+                    alert('User promoted to Admin successfully!');
+                    searchUsers(); // Обновляем список
+                } else {
+                    throw new Error(result.message || 'Promotion failed');
+                }
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+                console.error('Promotion error:', error);
+            }
+        }
+
+        // Автопоиск с задержкой 400ms
+        let searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(searchUsers, 400);
+        });
+
+        // Обработка Enter
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchUsers();
+        });
+    </script>
+</body>
+</html>
