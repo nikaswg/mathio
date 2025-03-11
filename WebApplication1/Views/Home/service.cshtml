@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хакерское Представление</title>
+    <style>
+        /* Основные стили */
+        :root {
+            --neon-pink: #BB86FC; /* Фиолетовый */
+            --dark-bg: #121212; /* Темный фон */
+            --text-color: #e0e0e0;
+            --border-color: #BB86FC;
+            --shadow-color: #BB86FC;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color);
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+            /* Анимация фона */
+            body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, rgba(187, 134, 252, 0.05) 25%, transparent 25%, transparent 50%, rgba(187, 134, 252, 0.05) 50%, rgba(187, 134, 252, 0.05) 75%, transparent 75%, transparent);
+                background-size: 40px 40px;
+                animation: moveBackground 4s linear infinite;
+                z-index: -1;
+            }
+
+        @@keyframes moveBackground {
+            0%
+
+        {
+            transform: translate(0, 0);
+        }
+
+        100% {
+            transform: translate(-20px, -20px);
+        }
+
+        }
+
+        .hacker-container {
+            background: rgba(18, 18, 18, 0.95); /* Темный фон контейнера */
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 90%; /* Уменьшаем ширину для мобильных устройств */
+            width: 800px; /* Фиксированная ширина для десктопов */
+            text-align: center;
+            box-shadow: 0 0 30px var(--shadow-color);
+            animation: fadeIn 2s ease-in-out, float 2s ease-in-out infinite; /* Обновленная анимация float */
+            position: relative;
+            z-index: 1;
+        }
+
+        @@keyframes fadeIn {
+            0%
+
+        {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        }
+
+        @@keyframes float {
+            0%, 100%
+
+        {
+            transform: translateY(0);
+        }
+
+
+
+        50% {
+            transform: translateY(-9px); /* Поднимаем контейнер на 15px */
+        }
+
+        }
+
+        h1, h2, h3, p {
+            margin: 10px 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--shadow-color);
+            animation: textGlow 3s infinite alternate;
+        }
+
+        @@keyframes textGlow {
+            0%
+
+        {
+            text-shadow: 0 0 10px var(--shadow-color);
+        }
+
+        100% {
+            text-shadow: 0 0 20px var(--shadow-color);
+        }
+
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--neon-pink);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--neon-pink);
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        .highlight {
+            color: var(--neon-pink);
+            font-weight: bold;
+        }
+
+        /* Стили для кнопки */
+        .login-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: var(--neon-pink);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--shadow-color);
+            animation: pulse 2s infinite;
+        }
+
+        @@keyframes pulse {
+            0%
+
+        {
+            transform: scale(1);
+            box-shadow: 0 0 15px var(--shadow-color);
+        }
+
+        50% {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--shadow-color);
+        }
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 15px var(--shadow-color);
+        }
+
+        }
+
+        .login-button:hover {
+            background: #9B6BFC; /* Более темный оттенок для hover */
+            box-shadow: 0 0 25px var(--shadow-color);
+        }
+
+        /* Стили для неоновой полосочки */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #BB86FC, #9B6BFC, #8A5BFC);
+            box-shadow: 0 0 10px #BB86FC, 0 0 20px #BB86FC, 0 0 40px #BB86FC;
+            z-index: 1000;
+            transition: width 0.5s ease;
+        }
+
+            .loading-bar.active {
+                width: 100%;
+            }
+
+        /* Адаптация под мобильные устройства */
+        @@media (max-width: 768px) {
+            .hacker-container
+
+        {
+            padding: 1.5rem;
+            max-width: 95%; /* Уменьшаем ширину для мобильных устройств */
+        }
+
+        h1 {
+            font-size: 2rem; /* Уменьшаем размер шрифта */
+        }
+
+        h2 {
+            font-size: 1.5rem; /* Уменьшаем размер шрифта */
+        }
+
+        h3 {
+            font-size: 1.2rem; /* Уменьшаем размер шрифта */
+        }
+
+        p {
+            font-size: 1rem; /* Уменьшаем размер шрифта */
+        }
+
+        .login-button {
+            padding: 10px 20px; /* Уменьшаем размер кнопки */
+            font-size: 0.9rem; /* Уменьшаем размер шрифта кнопки */
+        }
+
+        }
+
+        @@media (max-width: 480px) {
+            .hacker-container
+
+        {
+            padding: 1rem;
+            max-width: 100%; /* На всю ширину экрана */
+        }
+
+        h1 {
+            font-size: 1.8rem; /* Еще меньше для очень маленьких экранов */
+        }
+
+        h2 {
+            font-size: 1.3rem; /* Еще меньше для очень маленьких экранов */
+        }
+
+        h3 {
+            font-size: 1.1rem; /* Еще меньше для очень маленьких экранов */
+        }
+
+        p {
+            font-size: 0.9rem; /* Еще меньше для очень маленьких экранов */
+        }
+
+        .login-button {
+            padding: 8px 16px; /* Еще меньше для очень маленьких экранов */
+            font-size: 0.8rem; /* Еще меньше для очень маленьких экранов */
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="hacker-container">
+        <h1>Нагорнюк Н.В. и Атвиновский А.А.</h1>
+        <h2>
+            Интерактивное тестирование по теме
+            производная: применение HTML, CSS и JavaScript в образовательных технологиях
+        </h2>
+        <p>Группа: <span class="highlight">ИТП-21</span></p>
+        <p>Вуз: <span class="highlight">ГГУ им. Ф. Скорины</span></p>
+        <a href="#" class="login-button" id="loginButton">Переход к логину</a>
+    </div>
+
+    <!-- Неоновая полосочка -->
+    <div id="loading-bar" class="loading-bar"></div>
+
+    <script>
+        // JavaScript для интерактивности
+        const loginButton = document.getElementById('loginButton');
+        const loadingBar = document.getElementById('loading-bar');
+
+        loginButton.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Показываем полосочку
+            loadingBar.classList.add('active');
+
+            // Симуляция загрузки
+            setTimeout(() => {
+                // Переход на другую страницу
+                window.location.href = 'Index';
+            }, 1800); // 1.8 секунды для демонстрации
+        });
+    </script>
+</body>
+</html>

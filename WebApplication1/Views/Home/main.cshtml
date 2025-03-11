@@ -1,4 +1,4 @@
-﻿﻿@{
+﻿@{
     var username = ViewBag.Username;
     var email = ViewBag.Email;
     var role = ViewBag.Role;
@@ -188,6 +188,85 @@
                 background-color: #8A5BFC;
                 transform: scale(0.95);
             }
+
+        /* Адаптация под мобильные устройства */
+        @@media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+            }
+
+                .menu.active {
+                    display: flex;
+                }
+
+            .menu-button {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .nav-image {
+                margin: 10px 0;
+            }
+
+            .flex-container {
+                flex-direction: column;
+            }
+
+            .nav-section, .content-section {
+                width: 100%;
+                padding-right: 0;
+            }
+
+            .content-block {
+                margin-top: 10px;
+            }
+        }
+
+        /* Бургер-меню */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+            .burger-menu div {
+                width: 25px;
+                height: 3px;
+                background-color: #BB86FC;
+                margin: 4px 0;
+                transition: 0.4s;
+            }
+
+            /* Анимация бургер-меню */
+            .burger-menu.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .burger-menu.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .burger-menu.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+        @@media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
+            }
+        }
     </style>
 </head>
 
@@ -197,14 +276,18 @@
     </div>
 
     <nav>
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <img src="https://otvet.imgsmail.ru/download/213619861_4ca14290ae843d61a3fccbea523ccfb8_800.jpg" alt="Изображение" class="nav-image">
-        <div class="menu">
+        <div class="menu" id="menu">
             <button class="menu-button" onclick="toggleSubMenu('calc')">Калькуляторы</button>
             <button class="menu-button" onclick="toggleSubMenu('material')">Справочные материалы</button>
             <button class="menu-button" onclick="toggleSubMenu('tests')">Тесты</button>
             <button class="menu-button" onclick="showUserInfo()">Информация</button>
-            <a href="@Url.Action("UserAttempts", "Home", new { email = email, UserName = username })"
-               class="menu-button">
+            <a href="@Url.Action("UserAttempts", "Home", new { email = email, UserName = username })" class="menu-button">
                 Посмотреть попытки
             </a>
             @if (role == "Developer")
@@ -269,15 +352,22 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            const burger = document.querySelector(".burger-menu");
+            menu.classList.toggle("active");
+            burger.classList.toggle("active");
+        }
+
         function showUserInfo() {
             document.getElementById("modalUsername").innerText = '@username';
             document.getElementById("modalEmail").innerText = '@email';
             document.getElementById("modalRole").innerText = '@role';
-            document.getElementById("infoModal").style.display = "flex"; // Показываем модальное окно
+            document.getElementById("infoModal").style.display = "flex";
         }
 
         function closeModal() {
-            document.getElementById("infoModal").style.display = "none"; // Скрываем модальное окно
+            document.getElementById("infoModal").style.display = "none";
         }
 
         function toggleSubMenu(menuId) {
@@ -287,18 +377,18 @@
 
             if (menuId === 'calc') {
                 calcSubmenu.style.display = calcSubmenu.style.display === "none" || calcSubmenu.style.display === "" ? "block" : "none";
-                materialsSubmenu.style.display = "none"; // Hide materials submenu
-                testsSubmenu.style.display = "none"; // Hide tests submenu
+                materialsSubmenu.style.display = "none";
+                testsSubmenu.style.display = "none";
                 clearContent();
             } else if (menuId === 'material') {
                 materialsSubmenu.style.display = materialsSubmenu.style.display === "none" || materialsSubmenu.style.display === "" ? "block" : "none";
-                calcSubmenu.style.display = "none"; // Hide calculators submenu
-                testsSubmenu.style.display = "none"; // Hide tests submenu
+                calcSubmenu.style.display = "none";
+                testsSubmenu.style.display = "none";
                 clearContent();
             } else if (menuId === 'tests') {
                 testsSubmenu.style.display = testsSubmenu.style.display === "none" || testsSubmenu.style.display === "" ? "block" : "none";
-                calcSubmenu.style.display = "none"; // Hide calculators submenu
-                materialsSubmenu.style.display = "none"; // Hide materials submenu
+                calcSubmenu.style.display = "none";
+                materialsSubmenu.style.display = "none";
             }
         }
 
@@ -323,29 +413,17 @@
             const resultDiv = document.getElementById('limitResult');
 
             try {
-                // Определяем функцию от x
                 const f = math.compile(expression);
+                const limitAtInfinity = f.evaluate({ x: 1e10 });
+                const limitAtNegativeInfinity = f.evaluate({ x: -1e10 });
 
-                // Проверяем, является ли выражение линейным
-                if (expression.trim() === 'n') {
-                    resultDiv.innerText = `Предел функции ${expression} при x → ∞ равен: бесконечность`;
-                    return;
-                }
-
-                // Проверяем значение при большом x
-                const limitAtInfinity = f.evaluate({ x: 1e10 }); // Приближаемся к бесконечности
-                const limitAtNegativeInfinity = f.evaluate({ x: -1e10 }); // Приближаемся к -бесконечности
-
-                // Форматируем вывод
                 let formattedLimit;
 
-                // Логика для определения предела
                 if (limitAtInfinity === Infinity || limitAtNegativeInfinity === Infinity) {
                     formattedLimit = 'бесконечность';
                 } else if (limitAtInfinity === -Infinity || limitAtNegativeInfinity === -Infinity) {
                     formattedLimit = '-бесконечность';
                 } else {
-                    // Округляем до 4 знаков после запятой
                     formattedLimit = limitAtInfinity.toFixed(4);
                 }
 
@@ -377,7 +455,7 @@
             document.getElementById("emailDisplay").innerText = email;
             document.getElementById("roleDisplay").innerText = role;
 
-            document.getElementById("userInfo").style.display = "block"; // Отображаем информацию о пользователе
+            document.getElementById("userInfo").style.display = "block";
         }
 
         function Open_deriviate_test() {
@@ -388,7 +466,6 @@
             window.location.href = 'prob_test';
         }
 
-        // Вызов функции Login при загрузке страницы
         document.addEventListener("DOMContentLoaded", function () {
             Login();
         });

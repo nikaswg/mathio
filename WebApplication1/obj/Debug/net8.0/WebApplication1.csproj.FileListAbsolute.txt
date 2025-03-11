@@ -184,3 +184,7 @@ C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\DataLaye
 C:\Users\Никита\Downloads\mathio\WebApplication1\obj\Debug\net8.0\WebApplication1.sourcelink.json
 C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\DevOne.Security.Cryptography.BCrypt.dll
 C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\BCrypt.Net-Core.dll
+C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\WebApplication1.staticwebassets.endpoints.json
+C:\Users\Никита\Downloads\mathio\WebApplication1\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Никита\Downloads\mathio\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Никита\Downloads\mathio\WebApplication1\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

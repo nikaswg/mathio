@@ -61,6 +61,11 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public IActionResult service()
+        {
+            return View();
+        }
+
         public IActionResult dev_tools()
         {
             ViewBag.Username = HttpContext.Session.GetString("Username") ?? "Гость";
