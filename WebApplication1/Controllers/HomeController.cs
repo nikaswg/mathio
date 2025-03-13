@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using Services;
 using System.Diagnostics;
 using WebApplication1.Models;
+using Newtonsoft.Json;
+using System.Web;
 
 namespace WebApplication1.Controllers
 {
@@ -231,6 +233,21 @@ namespace WebApplication1.Controllers
                 _logger.LogError(ex, "Promotion error");
                 return Json(new { success = false, message = ex.Message });
             }
+        }
+
+        public ActionResult ViewAttempt(int id)
+        {
+            var attempt = _context.TestAttempts.FirstOrDefault(a => a.Id == id);
+            if (attempt == null)
+            {
+                return NotFound();
+            }
+
+            var userAnswers = JsonConvert.DeserializeObject<Dictionary<string, string>>(attempt.UserAnswers);
+            ViewBag.UserAnswers = userAnswers;
+            ViewBag.Attempt = attempt;
+
+            return View();
         }
     }
 }

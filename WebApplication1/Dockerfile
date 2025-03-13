@@ -1,26 +1,25 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-#For more information, please see https://aka.ms/containercompat
-
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-1809 AS base
+# Базовый образ для запуска приложения
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80 # Используем порт 80 для HTTP
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-1809 AS build
-ARG BUILD_CONFIGURATION=Release
+# Базовый образ для сборки приложения
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+
+# Копируем и восстанавливаем зависимости
 COPY ["WebApplication1.csproj", "."]
-RUN dotnet restore "./WebApplication1.csproj"
+RUN dotnet restore
+
+# Копируем весь проект и собираем его
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "./WebApplication1.csproj" -c %BUILD_CONFIGURATION% -o /app/build
+RUN dotnet build -c Release -o /app/build
 
+# Публикуем приложение
 FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./WebApplication1.csproj" -c %BUILD_CONFIGURATION% -o /app/publish /p:UseAppHost=false
+RUN dotnet publish -c Release -o /app/publish
 
+# Финальный образ для запуска
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .

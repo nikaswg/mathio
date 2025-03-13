@@ -270,6 +270,7 @@
             <th>Всего вопросов</th>
             <th>Ответы</th>
             <th>Название теста</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -292,17 +293,29 @@
                             @attempt.name_test
                         }
                     </td>
+                    <td>
+                        @if (attempt.name_test == "deriviate_test")
+                        {
+                            <button class="menu-button" onclick="viewAttempt(@attempt.Id)">Просмотреть попытку</button>
+                        }
+                    </td>
                 </tr>
             }
         }
         else
         {
             <tr>
-                <td colspan="5" class="text-center">Попыток не найдено</td>
+                <td colspan="6" class="text-center">Попыток не найдено</td>
             </tr>
         }
     </tbody>
 </table>
+
+<script>
+    function viewAttempt(attemptId) {
+        window.location.href = '/Home/ViewAttempt?id=' + attemptId;
+    }
+</script>
 
 <script>
     function filterAttempts() {

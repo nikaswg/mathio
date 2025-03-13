@@ -1,0 +1,607 @@
+﻿@{
+    var attempt = ViewBag.Attempt as DataLayer.TestAttempt;
+    var userAnswers = ViewBag.UserAnswers as Dictionary<string, string>;
+    var correctAnswers = new Dictionary<string, string>
+    {
+        { "q1", "2x" },
+        { "q2", "cos(x)" },
+        { "q3", "e^x" },
+        { "q4", "1/x" },
+        { "q5", "-sin(x)" },
+        { "q6", "sec^2(x)" },
+        { "q7", "3x^2" },
+        { "q8", "-1/x^2" },
+        { "q9", "5x^4" }
+    };
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Попытка теста</title>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin-top: 100px;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            padding-bottom: 60px;
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 40px;
+        }
+
+            .header h1 {
+                font-family: 'UnifrakturCook', cursive;
+                font-size: 4rem;
+                color: #BB86FC;
+            }
+
+        nav {
+            display: flex;
+            align-items: center;
+            background-color: #1E1E1E;
+            padding: 10px 20px;
+            justify-content: center;
+        }
+
+        .menu-button {
+            background-color: #FF9800;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin: 0 10px;
+        }
+
+            .menu-button:hover {
+                background-color: #FF5722;
+                transform: scale(1.05);
+            }
+
+            .menu-button:active {
+                background-color: #BF360C;
+                transform: scale(0.95);
+            }
+
+
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+            .question h2 {
+                font-size: 1.5rem;
+            }
+
+        .options {
+            margin: 10px 0;
+        }
+
+        /* Стили для радио-кнопок */
+        .option input[type="radio"] {
+            display: none; /* Скрываем стандартные радио-кнопки */
+        }
+
+        .option {
+            display: block;
+            margin: 10px 0;
+            padding: 12px 20px;
+            background-color: #2A2A2A;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+            .option:hover {
+                background-color: #3A3A3A;
+            }
+
+            /* Стиль для выбранной радио-кнопки */
+            .option input[type="radio"]:checked + span::before {
+                content: '';
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 12px;
+                height: 12px;
+                background-color: #BB86FC;
+                border-radius: 50%;
+            }
+
+            /* Текст внутри радио-кнопки */
+            .option span {
+                margin-left: 25px; /* Отступ для фиолетовой точки */
+            }
+
+        .submit-button {
+            background-color: #2A2A2A;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .submit-button:hover {
+             background-color: #3A3A3A;
+             transform: scale(1.05);
+        }
+
+        .submit-button:active {
+             background-color: #BB86FC;
+             transform: scale(0.95);
+        }
+
+        /* Стили для плашек "Верно!" и "Неверно!" */
+        /* Уменьшаем серый контейнер на 20% и делаем его симметричным */
+        .quiz-container {
+            max-width: 600px; /* Уменьшили на 20% (было 600px) */
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1E1E1E;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Убираем серый контейнер для результата и увеличиваем зеленый/красный */
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            width: 93%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Стили для плашки "Верно!" */
+        .correct {
+            background: linear-gradient(135deg, #00C853, #64DD17);
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: 2px solid #00C853;
+            animation: fireAnimation 1.5s infinite; /* Огненная анимация */
+        }
+
+        /* Стили для плашки "Неверно!" */
+        .incorrect {
+            background: linear-gradient(135deg, #D50000, #FF5252);
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: 2px solid #D50000;
+            animation: fireAnimation 1.5s infinite; /* Огненная анимация */
+        }
+
+        /* Огненная анимация */
+        @@keyframes fireAnimation {
+            0%
+
+        {
+            background: linear-gradient(135deg, #00C853, #64DD17); /* Для "Верно!" */
+        }
+
+        50% {
+            background: linear-gradient(135deg, #64DD17, #00C853); /* Меняем градиент */
+        }
+
+        100% {
+            background: linear-gradient(135deg, #00C853, #64DD17); /* Возвращаем градиент */
+        }
+
+        }
+
+        /* Огненная анимация для "Неверно!" */
+        .incorrect {
+            animation: fireAnimationIncorrect 1.5s infinite;
+        }
+
+        @@keyframes fireAnimationIncorrect {
+            0%
+
+        {
+            background: linear-gradient(135deg, #D50000, #FF5252); /* Для "Неверно!" */
+        }
+
+        50% {
+            background: linear-gradient(135deg, #FF5252, #D50000); /* Меняем градиент */
+        }
+
+        100% {
+            background: linear-gradient(135deg, #D50000, #FF5252); /* Возвращаем градиент */
+        }
+
+        }
+
+        footer {
+            background-color: #1E1E1E;
+            text-align: center;
+            padding: 10px;
+            color: #B0BEC5;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .summary {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Анимация появления */
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Попытка теста</h1>
+    </div>
+
+    <div class="quiz-container">
+        <form id="quizForm">
+            <div class="question">
+                <h2>1. Найдите производную функции f(x) = x^2.</h2>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="2x" @(userAnswers.ContainsKey("q1") && userAnswers["q1"] == "2x" ? "checked" : "") disabled>
+                        <span>2x</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="x" @(userAnswers.ContainsKey("q1") && userAnswers["q1"] == "x" ? "checked" : "") disabled>
+                        <span>x</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="x^2" @(userAnswers.ContainsKey("q1") && userAnswers["q1"] == "x^2" ? "checked" : "") disabled>
+                        <span>x^2</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="2" @(userAnswers.ContainsKey("q1") && userAnswers["q1"] == "2" ? "checked" : "") disabled>
+                        <span>2</span>
+                    </label>
+                </div>
+                <div class="result">
+                    @if (userAnswers.ContainsKey("q1"))
+                    {
+                        if (userAnswers["q1"] == correctAnswers["q1"])
+                        {
+                            <div class="correct">Верно!</div>
+                        }
+                        else
+                        {
+                            <div class="incorrect">Неверно! Правильный ответ: @correctAnswers["q1"]</div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="question">
+                <h2>2. Найдите производную функции f(x) = sin(x).</h2>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="cos(x)" @(userAnswers.ContainsKey("q2") && userAnswers["q2"] == "cos(x)" ? "checked" : "") disabled>
+                        <span>cos(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="sin(x)" @(userAnswers.ContainsKey("q2") && userAnswers["q2"] == "sin(x)" ? "checked" : "") disabled>
+                        <span>sin(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="tan(x)" @(userAnswers.ContainsKey("q2") && userAnswers["q2"] == "tan(x)" ? "checked" : "") disabled>
+                        <span>tan(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="sec(x)" @(userAnswers.ContainsKey("q2") && userAnswers["q2"] == "sec(x)" ? "checked" : "") disabled>
+                        <span>sec(x)</span>
+                    </label>
+                </div>
+                <div class="result">
+                    @if (userAnswers.ContainsKey("q2"))
+                    {
+                        if (userAnswers["q2"] == correctAnswers["q2"])
+                        {
+                            <div class="correct">Верно!</div>
+                        }
+                        else
+                        {
+                            <div class="incorrect">Неверно! Правильный ответ: @correctAnswers["q2"]</div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="question">
+                <h2>3. Найдите производную функции f(x) = e^x.</h2>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="e^x" @(userAnswers.ContainsKey("q3") && userAnswers["q3"] == "e^x" ? "checked" : "") disabled>
+                        <span>e^x</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="x" @(userAnswers.ContainsKey("q3") && userAnswers["q3"] == "x" ? "checked" : "") disabled>
+                        <span>x</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="ln(x)" @(userAnswers.ContainsKey("q3") && userAnswers["q3"] == "ln(x)" ? "checked" : "") disabled>
+                        <span>ln(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="x^e" @(userAnswers.ContainsKey("q3") && userAnswers["q3"] == "x^e" ? "checked" : "") disabled>
+                        <span>x^e</span>
+                    </label>
+                </div>
+                <div class="result">
+                    @if (userAnswers.ContainsKey("q3"))
+                    {
+                        if (userAnswers["q3"] == correctAnswers["q3"])
+                        {
+                            <div class="correct">Верно!</div>
+                        }
+                        else
+                        {
+                            <div class="incorrect">Неверно! Правильный ответ: @correctAnswers["q3"]</div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="question">
+                <h2>4. Найдите производную функции f(x) = ln(x).</h2>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="1/x" @(userAnswers.ContainsKey("q4") && userAnswers["q4"] == "1/x" ? "checked" : "") disabled>
+                        <span>1/x</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="ln(x)" @(userAnswers.ContainsKey("q4") && userAnswers["q4"] == "ln(x)" ? "checked" : "") disabled>
+                        <span>ln(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="x" @(userAnswers.ContainsKey("q4") && userAnswers["q4"] == "x" ? "checked" : "") disabled>
+                        <span>x</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="x^2" @(userAnswers.ContainsKey("q4") && userAnswers["q4"] == "x^2" ? "checked" : "") disabled>
+                        <span>x^2</span>
+                    </label>
+                </div>
+                <div class="result">
+                    @if (userAnswers.ContainsKey("q4"))
+                    {
+                        if (userAnswers["q4"] == correctAnswers["q4"])
+                        {
+                            <div class="correct">Верно!</div>
+                        }
+                        else
+                        {
+                            <div class="incorrect">Неверно! Правильный ответ: @correctAnswers["q4"]</div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="question">
+                <h2>5. Найдите производную функции f(x) = cos(x).</h2>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="-sin(x)" @(userAnswers.ContainsKey("q5") && userAnswers["q5"] == "-sin(x)" ? "checked" : "") disabled>
+                        <span>-sin(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="sin(x)" @(userAnswers.ContainsKey("q5") && userAnswers["q5"] == "sin(x)" ? "checked" : "") disabled>
+                        <span>sin(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="cos(x)" @(userAnswers.ContainsKey("q5") && userAnswers["q5"] == "cos(x)" ? "checked" : "") disabled>
+                        <span>cos(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="-cos(x)" @(userAnswers.ContainsKey("q5") && userAnswers["q5"] == "-cos(x)" ? "checked" : "") disabled>
+                        <span>-cos(x)</span>
+                    </label>
+                </div>
+                <div class="result">
+                    @if (userAnswers.ContainsKey("q5"))
+                    {
+                        if (userAnswers["q5"] == correctAnswers["q5"])
+                        {
+                            <div class="correct">Верно!</div>
+                        }
+                        else
+                        {
+                            <div class="incorrect">Неверно! Правильный ответ: @correctAnswers["q5"]</div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="question">
+                <h2>6. Найдите производную функции f(x) = tan(x).</h2>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="sec^2(x)" @(userAnswers.ContainsKey("q6") && userAnswers["q6"] == "sec^2(x)" ? "checked" : "") disabled>
+                        <span>sec²(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="csc^2(x)" @(userAnswers.ContainsKey("q6") && userAnswers["q6"] == "csc^2(x)" ? "checked" : "") disabled>
+                        <span>csc²(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="tan(x)" @(userAnswers.ContainsKey("q6") && userAnswers["q6"] == "tan(x)" ? "checked" : "") disabled>
+                        <span>tan(x)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="ln(x)" @(userAnswers.ContainsKey("q6") && userAnswers["q6"] == "ln(x)" ? "checked" : "") disabled>
+                        <span>ln(x)</span>
+                    </label>
+                </div>
+                <div class="result">
+                    @if (userAnswers.ContainsKey("q6"))
+                    {
+                        if (userAnswers["q6"] == correctAnswers["q6"])
+                        {
+                            <div class="correct">Верно!</div>
+                        }
+                        else
+                        {
+                            <div class="incorrect">Неверно! Правильный ответ: @correctAnswers["q6"]</div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="question">
+                <h2>7. Найдите производную функции f(x) = x^3.</h2>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="3x^2" @(userAnswers.ContainsKey("q7") && userAnswers["q7"] == "3x^2" ? "checked" : "") disabled>
+                        <span>3x²</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="x^2" @(userAnswers.ContainsKey("q7") && userAnswers["q7"] == "x^2" ? "checked" : "") disabled>
+                        <span>x²</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="3x" @(userAnswers.ContainsKey("q7") && userAnswers["q7"] == "3x" ? "checked" : "") disabled>
+                        <span>3x</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="x^3" @(userAnswers.ContainsKey("q7") && userAnswers["q7"] == "x^3" ? "checked" : "") disabled>
+                        <span>x³</span>
+                    </label>
+                </div>
+                <div class="result">
+                    @if (userAnswers.ContainsKey("q7"))
+                    {
+                        if (userAnswers["q7"] == correctAnswers["q7"])
+                        {
+                            <div class="correct">Верно!</div>
+                        }
+                        else
+                        {
+                            <div class="incorrect">Неверно! Правильный ответ: @correctAnswers["q7"]</div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="question">
+                <h2>8. Найдите производную функции f(x) = 1/x.</h2>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="-1/x^2" @(userAnswers.ContainsKey("q8") && userAnswers["q8"] == "-1/x^2" ? "checked" : "") disabled>
+                        <span>-1/x²</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="1/x" @(userAnswers.ContainsKey("q8") && userAnswers["q8"] == "1/x" ? "checked" : "") disabled>
+                        <span>1/x</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="1" @(userAnswers.ContainsKey("q8") && userAnswers["q8"] == "1" ? "checked" : "") disabled>
+                        <span>1</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="x" @(userAnswers.ContainsKey("q8") && userAnswers["q8"] == "x" ? "checked" : "") disabled>
+                        <span>x</span>
+                    </label>
+                </div>
+                <div class="result">
+                    @if (userAnswers.ContainsKey("q8"))
+                    {
+                        if (userAnswers["q8"] == correctAnswers["q8"])
+                        {
+                            <div class="correct">Верно!</div>
+                        }
+                        else
+                        {
+                            <div class="incorrect">Неверно! Правильный ответ: @correctAnswers["q8"]</div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="question">
+                <h2>9. Найдите производную функции f(x) = x^5.</h2>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="5x^4" @(userAnswers.ContainsKey("q9") && userAnswers["q9"] == "5x^4" ? "checked" : "") disabled>
+                        <span>5x⁴</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="4x^3" @(userAnswers.ContainsKey("q9") && userAnswers["q9"] == "4x^3" ? "checked" : "") disabled>
+                        <span>4x³</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="x^5" @(userAnswers.ContainsKey("q9") && userAnswers["q9"] == "x^5" ? "checked" : "") disabled>
+                        <span>x⁵</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="5x" @(userAnswers.ContainsKey("q9") && userAnswers["q9"] == "5x" ? "checked" : "") disabled>
+                        <span>5x</span>
+                    </label>
+                </div>
+                <div class="result">
+                    @if (userAnswers.ContainsKey("q9"))
+                    {
+                        if (userAnswers["q9"] == correctAnswers["q9"])
+                        {
+                            <div class="correct">Верно!</div>
+                        }
+                        else
+                        {
+                            <div class="incorrect">Неверно! Правильный ответ: @correctAnswers["q9"]</div>
+                        }
+                    }
+                </div>
+            </div>
+
+        </form>
+        <div class="summary">
+            <p>Результат: @attempt.Score из @attempt.TotalQuestions</p>
+        </div>
+    </div>
+</body>
+</html>
