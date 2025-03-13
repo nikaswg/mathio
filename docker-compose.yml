@@ -1,0 +1,29 @@
+services:
+  web:
+    image: webapplication1  # Имя образа для вашего приложения
+    build:
+      context: ./WebApplication1  # Указываем папку с Dockerfile
+      dockerfile: Dockerfile  # Указываем путь к Dockerfile
+    ports:
+      - "5000:80"  # Пробрасываем порт 80 контейнера на порт 5000 хоста
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Database=mathioDb;User Id=sa;Password=YourStrong!Passw0rd;
+    depends_on:
+      - db  # Указываем, что контейнер web зависит от контейнера db
+    command: >
+      powershell -Command "while (!(Test-NetConnection db -Port 1433).TcpTestSucceeded) { Start-Sleep -Seconds 1 } &&
+      dotnet ef database update &&
+      dotnet WebApplication1.dll"
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-windows-developer  # Windows-образ SQL Server
+    environment:
+      SA_PASSWORD: YourStrong!Passw0rd  # Пароль для пользователя sa
+      ACCEPT_EULA: Y  # Принимаем лицензионное соглашение
+    ports:
+      - "1433:1433"  # Пробрасываем порт SQL Server
+    volumes:
+      - sql_data:C:\ProgramData\Microsoft\SQLServer\MSSQL15.MSSQLSERVER\MSSQL\DATA  # Сохраняем данные базы данных в томе
+
+volumes:
+  sql_data:  # Том для хранения данных SQL Server
