@@ -27,7 +27,7 @@ namespace DataLayer
         public ApplicationDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            optionsBuilder.UseNpgsql("Host=dpg-cva9vqt2ng1s73c14dfg-a.oregon-postgres.render.com;Port=5432;Database=mathdb_lg7k;Username=mathdb_lg7k_user;Password=RkNo3LAN7nH1dq375yYYBVQxWlVotqWc;",
+            optionsBuilder.UseNpgsql("postgresql://mathdb_lg7k_user:RkNo3LAN7nH1dq375yYYBVQxWlVotqWc@dpg-cva9vqt2ng1s73c14dfg-a.oregon-postgres.render.com:5432/mathdb_lg7k",
                 b => b.MigrationsAssembly("DataLayer"));
 
             return new ApplicationDbContext(optionsBuilder.Options);

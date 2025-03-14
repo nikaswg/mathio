@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{8FD3E0C8-5331-4CD4-8A4D-B6B7D9194C23}|..\\DataLayer\\DataLayer.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\datalayer\\applicatondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8FD3E0C8-5331-4CD4-8A4D-B6B7D9194C23}|..\\DataLayer\\DataLayer.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\datalayer\\applicatondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -144,7 +144,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 26,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Document",
@@ -156,7 +156,8 @@
               "RelativeToolTip": ".dockerignore",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-03-13T21:38:35.982Z"
+              "WhenOpened": "2025-03-13T21:38:35.982Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -181,7 +182,8 @@
               "RelativeToolTip": "Views\\Home\\ViewAttempt.cshtml",
               "ViewState": "AgIAAIIAAAAAAAAAAIAwwJYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T19:31:09.55Z"
+              "WhenOpened": "2025-03-13T19:31:09.55Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -193,7 +195,8 @@
               "RelativeToolTip": "Views\\Home\\UserAttempts.cshtml",
               "ViewState": "AgIAAPEAAAAAAAAAAAAwwAcBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T19:23:57.16Z"
+              "WhenOpened": "2025-03-13T19:23:57.16Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -205,7 +208,8 @@
               "RelativeToolTip": "Views\\Home\\service.cshtml",
               "ViewState": "AgIAADAAAAAAAAAAAIAwwEEAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-11T17:06:26.186Z"
+              "WhenOpened": "2025-03-11T17:06:26.186Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -217,7 +221,8 @@
               "RelativeToolTip": "Views\\Home\\dev_tools.cshtml",
               "ViewState": "AgIAAC0BAAAAAAAAAAAwwFEBAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-07T21:23:42.895Z"
+              "WhenOpened": "2025-03-07T21:23:42.895Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -229,7 +234,8 @@
               "RelativeToolTip": "Services\\SearchService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T20:54:03.699Z"
+              "WhenOpened": "2025-03-07T20:54:03.699Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -252,7 +258,8 @@
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAPoAAAAAAAAAAAAYwBwBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-27T20:43:17.687Z"
+              "WhenOpened": "2025-02-27T20:43:17.687Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -262,9 +269,10 @@
               "RelativeDocumentMoniker": "Views\\Home\\deriviate_test.cshtml",
               "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\Home\\deriviate_test.cshtml",
               "RelativeToolTip": "Views\\Home\\deriviate_test.cshtml",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-02T17:05:16.791Z"
+              "WhenOpened": "2025-03-02T17:05:16.791Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -276,7 +284,8 @@
               "RelativeToolTip": "Services\\AuthService.cs",
               "ViewState": "AgIAAIUAAAAAAAAAAAAYwI4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T18:33:32.971Z"
+              "WhenOpened": "2025-03-05T18:33:32.971Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -288,7 +297,8 @@
               "RelativeToolTip": "Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T20:42:23.883Z"
+              "WhenOpened": "2025-02-28T20:42:23.883Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -301,13 +311,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ApplicatonDbContext.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\ApplicatonDbContext.cs",
               "RelativeDocumentMoniker": "..\\DataLayer\\ApplicatonDbContext.cs",
               "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\ApplicatonDbContext.cs",
               "RelativeToolTip": "..\\DataLayer\\ApplicatonDbContext.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAUwCMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T21:13:02.733Z",
               "EditorCaption": ""
@@ -322,7 +332,8 @@
               "RelativeToolTip": "..\\DataLayer\\DataLayer.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-02-26T21:07:26.466Z"
+              "WhenOpened": "2025-02-26T21:07:26.466Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -332,9 +343,10 @@
               "RelativeDocumentMoniker": "..\\DataLayer\\User.cs",
               "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\User.cs",
               "RelativeToolTip": "..\\DataLayer\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA6wAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T20:33:45.185Z"
+              "WhenOpened": "2025-02-28T20:33:45.185Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -346,7 +358,8 @@
               "RelativeToolTip": "..\\DataLayer\\TestAttempt.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:10:11.793Z"
+              "WhenOpened": "2025-02-26T21:10:11.793Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -356,9 +369,10 @@
               "RelativeDocumentMoniker": "Views\\Home\\main.cshtml",
               "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Views\\Home\\main.cshtml",
               "RelativeToolTip": "Views\\Home\\main.cshtml",
-              "ViewState": "AgIAAAkBAAAAAAAAAAAAABsBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYBAAAAAAAAAIBJwBsBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-28T20:40:31.171Z"
+              "WhenOpened": "2025-02-28T20:40:31.171Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -370,7 +384,8 @@
               "RelativeToolTip": "..\\DataLayer\\QuizViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:11:18.778Z"
+              "WhenOpened": "2025-02-26T21:11:18.778Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -391,7 +406,8 @@
               "RelativeToolTip": "..\\DataLayer\\Migrations\\20250305204559_m.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAgwCsAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T20:45:59.274Z"
+              "WhenOpened": "2025-03-05T20:45:59.274Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -403,7 +419,8 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAQwF0AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:19:32.053Z"
+              "WhenOpened": "2025-02-26T21:19:32.053Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -437,7 +454,8 @@
               "RelativeToolTip": "..\\DataLayer\\RegisterModel.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAYwBoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:10:34.955Z"
+              "WhenOpened": "2025-02-26T21:10:34.955Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -452,7 +470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -473,7 +491,8 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAwBwAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-27T20:50:37.875Z"
+              "WhenOpened": "2025-02-27T20:50:37.875Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -485,7 +504,8 @@
               "RelativeToolTip": "Views\\Home\\Register.cshtml",
               "ViewState": "AgIAAEkAAAAAAAAAAAAswFoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-28T20:55:21.797Z"
+              "WhenOpened": "2025-02-28T20:55:21.797Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -497,7 +517,8 @@
               "RelativeToolTip": "..\\DataLayer\\LoginModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:11:03.135Z"
+              "WhenOpened": "2025-02-26T21:11:03.135Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -549,7 +570,8 @@
               "RelativeToolTip": "..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\build\\Container.targets",
               "ViewState": "AgIAAMkAAAAAAAAAAAD4v9YAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-02-26T21:20:08.109Z"
+              "WhenOpened": "2025-02-26T21:20:08.109Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -572,7 +594,8 @@
               "RelativeToolTip": "Views\\_ViewStart.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-27T20:50:16.661Z"
+              "WhenOpened": "2025-02-27T20:50:16.661Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -584,7 +607,8 @@
               "RelativeToolTip": "Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-27T20:50:26.438Z"
+              "WhenOpened": "2025-02-27T20:50:26.438Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
