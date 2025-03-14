@@ -1,20 +1,25 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using DataLayer;
 using Services;
+using Microsoft.Extensions.Logging;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Настройка логирования
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
+builder.Logging.AddDebug();
 
-// Настройка базы данных
+// Настройка базы данных для PostgreSQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Регистрация AuthService и других сервисов
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<SearchService>();
 
 // Настройка JWT
 builder.Services.AddAuthentication(options =>
@@ -35,10 +40,6 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
-
-// Регистрация AuthService
-builder.Services.AddScoped<AuthService>();
-builder.Services.AddScoped<SearchService>();
 
 // Добавление сессий
 builder.Services.AddSession(options =>
@@ -65,7 +66,24 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Настройка middleware
+// Проверка подключения к базе данных
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    try
+    {
+        // Проверяем соединение
+        dbContext.Database.OpenConnection();
+        dbContext.Database.CloseConnection();
+        app.Logger.LogInformation("Успешно подключено к базе данных.");
+    }
+    catch (Exception ex)
+    {
+        app.Logger.LogError(ex, "Не удалось подключиться к базе данных.");
+    }
+}
+
+// Остальная часть middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
