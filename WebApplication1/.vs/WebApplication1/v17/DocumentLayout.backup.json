@@ -3,6 +3,13 @@
   "WorkspaceRootPath": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD3E0C8-5331-4CD4-8A4D-B6B7D9194C23}|..\\DataLayer\\DataLayer.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\datalayer\\applicatondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
@@ -11,15 +18,8 @@
       "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:.dockerignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8FD3E0C8-5331-4CD4-8A4D-B6B7D9194C23}|..\\DataLayer\\DataLayer.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\datalayer\\applicatondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{67ABEC41-D4CB-42AC-BA95-07121DFF2468}|WebApplication1.csproj|c:\\users\\\u043D\u0438\u043A\u0438\u0442\u0430\\downloads\\mathio\\webapplication1\\views\\home\\main.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -144,11 +144,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 26,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": ".dockerignore",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\.dockerignore",
               "RelativeDocumentMoniker": ".dockerignore",
@@ -160,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Dockerfile",
               "RelativeDocumentMoniker": "Dockerfile",
@@ -301,15 +301,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "ApplicatonDbContext.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\ApplicatonDbContext.cs",
               "RelativeDocumentMoniker": "..\\DataLayer\\ApplicatonDbContext.cs",
               "ToolTip": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\DataLayer\\ApplicatonDbContext.cs",
               "RelativeToolTip": "..\\DataLayer\\ApplicatonDbContext.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAkwCMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAUwCMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T21:13:02.733Z"
+              "WhenOpened": "2025-02-26T21:13:02.733Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -394,7 +395,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -451,7 +452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\\u041D\u0438\u043A\u0438\u0442\u0430\\Downloads\\mathio\\WebApplication1\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -459,7 +460,8 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-26T21:17:39.015Z"
+              "WhenOpened": "2025-02-26T21:17:39.015Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
