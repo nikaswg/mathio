@@ -5,16 +5,36 @@ using Microsoft.IdentityModel.Tokens;
 using DataLayer;
 using Services;
 using System.Text;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
-// Настройка базы данных
+// Настройка базы данных с логированием
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
+    options.UseSqlServer(connectionString);
+
+    // Логирование успешного подключения
+    var logger = builder.Services.BuildServiceProvider().GetRequiredService<ILogger<ApplicationDbContext>>();
+
+    try
+    {
+        using (var connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            logger.LogInformation("Success connect to db.");
+        }
+    }
+    catch (Exception ex)
+    {
+        logger.LogError($"fail connection to db: {ex.Message}");
+    }
+});
 
 // Настройка JWT
 builder.Services.AddAuthentication(options =>

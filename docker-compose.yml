@@ -1,3 +1,5 @@
+version: '3.8'  # Указываем версию Docker Compose
+
 services:
   web:
     image: webapplication1  # Имя образа для вашего приложения
@@ -7,23 +9,24 @@ services:
     ports:
       - "5000:80"  # Пробрасываем порт 80 контейнера на порт 5000 хоста
     environment:
-      - ConnectionStrings__DefaultConnection=Server=db;Database=mathioDb;User Id=sa;Password=YourStrong!Passw0rd;
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=mathdb_lg7k;Username=mathdb_lg7k_user;Password=RkNo3LAN7nH1dq375yYYBVQxWlVotqWc
     depends_on:
       - db  # Указываем, что контейнер web зависит от контейнера db
     command: >
-      powershell -Command "while (!(Test-NetConnection db -Port 1433).TcpTestSucceeded) { Start-Sleep -Seconds 1 } &&
+      powershell -Command "while (!(Test-NetConnection db -Port 5432).TcpTestSucceeded) { Start-Sleep -Seconds 1 } &&
       dotnet ef database update &&
       dotnet WebApplication1.dll"
 
   db:
-    image: mcr.microsoft.com/mssql/server:2019-windows-developer  # Windows-образ SQL Server
+    image: postgres:16  # Образ PostgreSQL
     environment:
-      SA_PASSWORD: YourStrong!Passw0rd  # Пароль для пользователя sa
-      ACCEPT_EULA: Y  # Принимаем лицензионное соглашение
+      POSTGRES_DB: mathdb_lg7k  # Имя базы данных
+      POSTGRES_USER: mathdb_lg7k_user  # Имя пользователя
+      POSTGRES_PASSWORD: RkNo3LAN7nH1dq375yYYBVQxWlVotqWc  # Пароль для пользователя
     ports:
-      - "1433:1433"  # Пробрасываем порт SQL Server
+      - "5432:5432"  # Пробрасываем порт PostgreSQL
     volumes:
-      - sql_data:C:\ProgramData\Microsoft\SQLServer\MSSQL15.MSSQLSERVER\MSSQL\DATA  # Сохраняем данные базы данных в томе
+      - pg_data:/var/lib/postgresql/data  # Сохраняем данные базы данных в томе
 
 volumes:
-  sql_data:  # Том для хранения данных SQL Server
+  pg_data:  # Том для хранения данных PostgreSQL

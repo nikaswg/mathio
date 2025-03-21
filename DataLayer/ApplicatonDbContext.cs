@@ -27,7 +27,7 @@ namespace DataLayer
         public ApplicationDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=mathioDb;Trusted_Connection=True;MultipleActiveResultSets=true",
+            optionsBuilder.UseSqlServer("Host=dpg-cva9vqt2ng1s73c14dfg-a;Port=5432;Database=mathdb_lg7k;Username=mathdb_lg7k_user;Password=RkNo3LAN7nH1dq375yYYBVQxWlVotqWc",
                 b => b.MigrationsAssembly("DataLayer"));
 
             return new ApplicationDbContext(optionsBuilder.Options);
