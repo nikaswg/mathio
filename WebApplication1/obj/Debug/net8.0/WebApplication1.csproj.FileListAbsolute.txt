@@ -189,3 +189,5 @@ C:\Users\Никита\Downloads\mathio\WebApplication1\obj\Debug\net8.0\staticwe
 C:\Users\Никита\Downloads\mathio\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\Никита\Downloads\mathio\WebApplication1\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\Npgsql.dll
+C:\Users\Никита\Downloads\mathio\WebApplication1\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

@@ -17,7 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-    options.UseSqlServer(connectionString);
+    options.UseNpgsql(connectionString);
 
     // Логирование успешного подключения
     var logger = builder.Services.BuildServiceProvider().GetRequiredService<ILogger<ApplicationDbContext>>();
