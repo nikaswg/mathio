@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using DataLayer;
 using Services;
 using System.Text;
-using Microsoft.Data.SqlClient;
+using Npgsql; // Добавлено для работы с PostgreSQL
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +24,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
     try
     {
-        using (var connection = new SqlConnection(connectionString))
+        using (var connection = new NpgsqlConnection(connectionString)) // Изменено на NpgsqlConnection
         {
             connection.Open();
             logger.LogInformation("Success connect to db.");
