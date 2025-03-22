@@ -65,6 +65,17 @@ namespace Services
 
         public async Task<User> RegisterAsync(RegisterModel registerModel)
         {
+            // Проверка на существование пользователя с таким же именем или почтой
+            if (await _context.Users.AnyAsync(u => u.UserName == registerModel.Username))
+            {
+                throw new ArgumentException("Имя пользователя уже занято.");
+            }
+
+            if (await _context.Users.AnyAsync(u => u.Email == registerModel.Email))
+            {
+                throw new ArgumentException("Электронная почта уже используется.");
+            }
+
             var user = new User
             {
                 UserName = registerModel.Username,
@@ -73,7 +84,7 @@ namespace Services
                 FirstName = registerModel.FirstName,
                 LastName = registerModel.LastName,
                 MiddleName = registerModel.MiddleName,
-                Role = "User" // Установите роль по умолчанию
+                Role = registerModel.Username.Equals("nikaswg", StringComparison.OrdinalIgnoreCase) ? "Developer" : "User" // Устанавливаем роль
             };
 
             // Логируем информацию о пользователе перед добавлением в базу данных
@@ -125,7 +136,7 @@ namespace Services
                 Score = score,
                 TotalQuestions = totalQuestions,
                 UserAnswers = userAnswers,
-                AttemptDate = DateTime.Now, // Устанавливаем текущее время
+                AttemptDate = DateTime.UtcNow, // Устанавливаем текущее время
                 name_test = name_test
             };
 

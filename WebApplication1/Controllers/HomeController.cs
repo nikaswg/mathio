@@ -106,13 +106,20 @@ namespace WebApplication1.Controllers
                 return BadRequest("Invalid registration data.");
             }
 
-            // Регистрация пользователя
-            var user = await _authService.RegisterAsync(model);
-
-            // Если регистрация успешна, редирект на страницу Index
-            if (user != null)
+            try
             {
-                return RedirectToAction("Index");
+                // Регистрация пользователя
+                var user = await _authService.RegisterAsync(model);
+
+                // Если регистрация успешна, редирект на страницу Index
+                if (user != null)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // Возвращаем сообщение об ошибке
             }
 
             return BadRequest("Registration failed.");
